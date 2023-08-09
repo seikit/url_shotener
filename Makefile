@@ -23,7 +23,8 @@ venv: pre-requisite
 install: venv
 	. $(VENVPATH)/activate && \
 	pip3 install -U pip wheel poetry pre-commit && \
-	poetry install
+	poetry install &&\
+	pre-commit install
 
 uninstall:
 	@rm -rv $(VENVNAME)
