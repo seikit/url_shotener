@@ -3,6 +3,8 @@ name = "URL SHORTENER"
 version = "1.0.0"
 description = "This application is a URL SHORTENER."
 
+authors = ["Me"]
+
 [tool.poetry.dependencies]
 
 python = ">=3.11"
