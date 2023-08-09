@@ -15,12 +15,14 @@ repos:
  - repo: local
    hooks:
     - id: run_tests
+      name: pytests
       language: script
-      name: Run pyTests
+      types: [python]
       entry: bash -c 'make test'
       stage: [pre-push]
     - id: lint_&_format
+      name: lint_format
       language: script
-      name: Run lint_format
+      types: [python]
       entry: bash -c 'make lint'
       stage: [pre-push]
