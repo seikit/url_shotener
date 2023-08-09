@@ -1,0 +1,9 @@
+# Cache
+.pytest_cache
+.ruff_cache
+
+# Lock
+poetry.lock
+
+# IDE
+.vscode

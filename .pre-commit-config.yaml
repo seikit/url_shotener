@@ -1,0 +1,25 @@
+---
+repos:
+ - repo: https://github.com/pre-commit/pre-commit-hooks
+   rev: v2.3.0
+   hooks:
+    - id: check-yaml
+    - id: end-of-file-fixer
+    - id: trailing-whitespace
+ - repo: https://github.com/astral-sh/ruff-pre-commit
+   rev: v0.0.283
+   hooks:
+    - id: ruff
+      args: [--fix, --exit-non-zero-on-fix]
+ - repo: local
+   hooks:
+    - id: run_tests
+      language: script
+      name: Run pyTests
+      entry: bash -c 'make test'
+      stage: [pre-push]
+    - id: lint_&_format
+      language: script
+      name: Run lint_format
+      entry: bash -c 'make lint'
+      stage: [pre-push]
