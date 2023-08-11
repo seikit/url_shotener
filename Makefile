@@ -27,6 +27,8 @@ install: venv
 	pre-commit install
 
 lint:
+	@echo "== BLACK =="
+	black .
 	@echo "== RUFF =="
 	ruff check .
 	@echo "== YAML =="
