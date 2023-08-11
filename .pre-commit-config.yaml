@@ -19,10 +19,10 @@ repos:
       language: script
       types: [python]
       entry: bash -c 'make test'
-      stage: [pre-push]
+      stages: [push]
     - id: lint_&_format
       name: lint_format
       language: script
       types: [python]
       entry: bash -c 'make lint'
-      stage: [pre-push]
+      stages: [push]
