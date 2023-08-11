@@ -26,19 +26,19 @@ install: venv
 	poetry install &&\
 	pre-commit install
 
-uninstall:
-	@rm -rv $(VENVNAME)
-
 lint:
 	@echo "== RUFF =="
 	ruff check .
 	@echo "== YAML =="
 	yamllint -d "{ignore: ./venv}" .
 
-clean: uninstall
+clean:
+	pre-commit clean
+	@rm -rv $(VENVNAME)
 	@rm -rvf poetry.lock
 	@rm -rvf .ruff_cache
 	@rm -rvf .pytest_cache
+	@rm -rvf .git/hooks/
 
 test:
 	$(VENVPATH)/pytest $(TEST_DIR)
