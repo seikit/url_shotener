@@ -13,3 +13,6 @@ poetry.lock
 
 # pyc
 *.pyc
+
+# ENV
+.env
