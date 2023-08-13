@@ -22,7 +22,7 @@ psycopg2-binary = "2.9.7"
 black = "^23.7.0"
 
 [tool.ruff]
-
+fix = true
 exclude = [
     ".ruff_cache",
     ".venv",
