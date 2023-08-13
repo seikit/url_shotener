@@ -8,14 +8,20 @@ class Settings(BaseSettings):
 
     # DB
     db_driver: str = "postgresql"
-    host: str
-    user: str
-    pwd: str
+    db_host: str
+    db_user: str
+    db_pwd: str
     database: str
 
     # Uvicorn
+    app: str = "main:app"
     host: str = "0.0.0.0"
     port: int = 8080
+    reload: bool = False
+    workers: int = 2
+
+    # URL
+    base_domain: str = "https://short-url/"
 
 
 settings = Settings()
