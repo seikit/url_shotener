@@ -22,8 +22,8 @@ def upgrade() -> None:
     op.create_table(
         "url",
         sa.Column("id", sa.Integer, primary_key=True),
-        sa.Column("short_url", sa.String(6), nullable=False),
-        sa.Column("long_url", sa.String(50), nullable=False),
+        sa.Column("short_url", sa.String(100), nullable=False, unique=True),
+        sa.Column("long_url", sa.String(100), nullable=False),
     )
 
 
