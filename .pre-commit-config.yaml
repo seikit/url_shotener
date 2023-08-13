@@ -16,13 +16,15 @@ repos:
    hooks:
     - id: run_tests
       name: pytests
-      language: script
+      language: system
+      pass_filenames: false
+      always_run: true
       types: [python]
       entry: bash -c 'make test'
       stages: [push]
     - id: lint_&_format
       name: lint_format
-      language: script
+      language: system
       types: [python]
       entry: bash -c 'make lint'
       stages: [push]
