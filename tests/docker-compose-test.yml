@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  postgres_db_test:
+    image: postgres:15.3-bookworm
+    restart: always
+    environment:
+      POSTGRES_USER: test_dev_user
+      POSTGRES_PASSWORD: test_pwd_1234
+      POSTGRES_DB: test_url_shortener
+    ports:
+        - "5430:5432"
