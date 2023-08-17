@@ -25,5 +25,13 @@ class Settings(BaseSettings):
     # URL
     base_domain: str = "https://short-url/"
 
+    # TEST_DB_CONN
+    test_db_conn: str = (
+        "postgresql://test_dev_user:test_pwd_1234@localhost:5430/test_url_shortener"
+    )
+
+    # Max wait time
+    max_wait: int = 2
+
 
 settings = Settings()
