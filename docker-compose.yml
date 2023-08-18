@@ -10,3 +10,11 @@ services:
       POSTGRES_DB: url_shortener
     ports:
         - "5432:5432"
+  cache:
+    image: redis/redis-stack:latest
+    restart: no
+    ports:
+      - "6379:6379"
+      - "8001:8001"
+    environment:
+      REDIS_ARGS: "--requirepass pwd_redis_1234"

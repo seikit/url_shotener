@@ -33,5 +33,11 @@ class Settings(BaseSettings):
     # Max wait time
     max_wait: int = 2
 
+    # Redis
+    redis_host: str
+    redis_port: int
+    redis_pwd: str
+    decode_responses: bool = True
+
 
 settings = Settings()
