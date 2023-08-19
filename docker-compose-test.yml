@@ -10,3 +10,10 @@ services:
       POSTGRES_DB: test_url_shortener
     ports:
         - "5430:5432"
+  cache:
+    image: redis/redis-stack:latest
+    restart: no
+    ports:
+      - "6370:6379"
+    environment:
+      REDIS_ARGS: "--requirepass pwd_test_redis_1234"

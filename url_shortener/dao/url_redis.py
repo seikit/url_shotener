@@ -8,5 +8,5 @@ class UrlRedis:
     def get(self, short: str) -> str:
         return self.r.get(short)
 
-    def set(self, short: str, long: str) -> None:
-        self.r.set(name=short, value=long)
+    def set(self, short: str, long: str) -> str:
+        return self.r.set(name=short, value=long)

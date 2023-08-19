@@ -25,11 +25,6 @@ class Settings(BaseSettings):
     # URL
     base_domain: str = "https://short-url/"
 
-    # TEST_DB_CONN
-    test_db_conn: str = (
-        "postgresql://test_dev_user:test_pwd_1234@localhost:5430/test_url_shortener"
-    )
-
     # Max wait time
     max_wait: int = 2
 
@@ -38,6 +33,18 @@ class Settings(BaseSettings):
     redis_port: int
     redis_pwd: str
     decode_responses: bool = True
+
+    ## Test environment
+    # Redis Test
+    test_redis_host: str = "localhost"
+    test_redis_port: int = 6370
+    test_redis_pwd: str = "pwd_test_redis_1234"
+    test_redis_decode_responses: bool = True
+
+    # TEST_DB_CONN
+    test_db_conn: str = (
+        "postgresql://test_dev_user:test_pwd_1234@localhost:5430/test_url_shortener"
+    )
 
 
 settings = Settings()

@@ -2,12 +2,12 @@ from fastapi.testclient import TestClient
 
 
 def test_shorten(client: TestClient, data: dict) -> None:
-    response = client.post("/shorten", params={"long_url": data["long"]})
+    response = client.post("/shorten", params={"long_url": data[0]})
     assert response.status_code == 200
 
 
 def test_short_url(client: TestClient, data: dict) -> None:
-    response = client.post("/shorten", params={"long_url": data["long"]})
+    response = client.post("/shorten", params={"long_url": data[1]})
     assert response.status_code == 200
     resp_data: dict = response.json()
 
@@ -15,4 +15,4 @@ def test_short_url(client: TestClient, data: dict) -> None:
     assert response.status_code == 200
     resp_data: dict = response.json()
 
-    assert resp_data["long_url"] == data["long"]
+    assert resp_data["long_url"] == data[1]
