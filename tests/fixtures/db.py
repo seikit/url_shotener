@@ -4,10 +4,11 @@ import alembic
 from fastapi.testclient import TestClient
 import pytest
 from alembic.config import Config
+import redis
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from main import app
-from url_shortener.config.database import get_db
+from url_shortener.config.database import get_db, get_redis
 
 from url_shortener.config.settings import settings
 
@@ -25,7 +26,21 @@ def override_get_db():
         db.close()
 
 
+def override_get_redis():
+    cache = redis.Redis(
+        host=settings.test_redis_host,
+        port=settings.test_redis_port,
+        decode_responses=settings.test_redis_decode_responses,
+        password=settings.test_redis_pwd,
+    )
+    try:
+        yield cache
+    finally:
+        cache.close()
+
+
 app.dependency_overrides[get_db] = override_get_db
+app.dependency_overrides[get_redis] = override_get_redis
 
 
 @pytest.fixture
@@ -67,3 +82,13 @@ def setup():
     yield
 
     shutdown_test_container()
+
+
+@pytest.fixture
+def get_redis():
+    return redis.Redis(
+        host=settings.test_redis_host,
+        port=settings.test_redis_port,
+        decode_responses=settings.test_redis_decode_responses,
+        password=settings.test_redis_pwd,
+    )
